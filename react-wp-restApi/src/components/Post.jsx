@@ -28,6 +28,7 @@ export default function Post() {
 
   return (
     <MDBContainer>
+       <h1 className="text-center mt-5">Tutti i post</h1>
       {loading ? (
         <Loader />
       ) : (
@@ -46,6 +47,7 @@ export default function Post() {
                   )}
                   <MDBCardBody>
                     <MDBCardTitle>{post.title.rendered}</MDBCardTitle>
+                    <MDBCardText className="fw-bold"><i class="bi bi-person-fill"></i> {post._embedded.author[0].name}</MDBCardText>
                     <MDBCardText>
                       <span dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
                     </MDBCardText>

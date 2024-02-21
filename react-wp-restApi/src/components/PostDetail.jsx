@@ -30,6 +30,7 @@ export default function PostDetail() {
       ) : (
         <div className="my-5">
         <h1>{postDetail?.title?.rendered}</h1>
+        <p className=" fs-5"><i class="bi bi-person-fill"></i> {postDetail?._embedded?.author[0].name}</p>
         {postDetail?._embedded?.["wp:featuredmedia"]?.[0]?.source_url && (
           <img
             src={postDetail._embedded["wp:featuredmedia"][0].source_url}
