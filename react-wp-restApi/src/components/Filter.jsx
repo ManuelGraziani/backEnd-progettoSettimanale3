@@ -16,7 +16,7 @@ export default function Filter({ setPosts }) {
   useEffect(() => {
     axios
       .get(`http://techcrunch.com/wp-json/wp/v2/posts?_embed${category !== "all" ? `&categories=${category}` : ""}`)
-      .then((res) => setPosts(res.data), )
+      .then((res) => setPosts(res.data) )
       .catch((err) => console.log(err));
   }, [category]);
 

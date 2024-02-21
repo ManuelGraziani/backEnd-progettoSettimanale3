@@ -17,6 +17,7 @@ import Loader from "../pages/Loader";
 export default function Post() {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
+  const [categoryPost, setCategoryPost] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -33,7 +34,7 @@ export default function Post() {
       ) : (
         <>
           <h1 className="text-center mt-5">Tutti i post</h1>
-          <Filter setPosts={setPosts} />
+          <Filter setPosts={setPosts} setCategoryPost={setCategoryPost} />
           <MDBRow>
             <MDBCol className="d-flex justify-content-center flex-wrap">
               {posts?.map((post) => (
@@ -47,10 +48,15 @@ export default function Post() {
                       />
                     )}
                   <MDBCardBody>
-                    <MDBCardTitle>{post.title.rendered}</MDBCardTitle>
+                    <MDBCardTitle><span dangerouslySetInnerHTML={{ __html: post.title.rendered }}></span></MDBCardTitle>
                     <MDBCardText className="fw-bold">
-                      <i class="bi bi-person-fill"></i>{" "}
-                      {post._embedded.author[0].name}
+                      <div>
+                        <i class="bi bi-person-fill"></i>{" "}
+                        {post._embedded.author[0].name}
+                      </div>
+                      <div>
+                      <i class="bi bi-tag-fill"></i> {post.primary_category.name}
+                      </div>
                     </MDBCardText>
                     <MDBCardText>
                       <span
